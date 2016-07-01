@@ -320,7 +320,6 @@ void create_lsi(const http::server::request &req, http::server::reply &rep, boos
 		//Controller connection
 		controller_hostname = json_spirit::find_value(obj, "controller-hostname").get_str();
 		controller_port = json_spirit::find_value(obj, "controller-port").get_uint64();
-		std::cout << controller_hostname << "   " << controller_port << std::endl;
 		socket_params.drop_param("remote-hostname");
 		socket_params.add_param("remote-hostname") = controller_hostname;
 		socket_params.drop_param("remote-port");
@@ -359,7 +358,6 @@ void create_lsi(const http::server::request &req, http::server::reply &rep, boos
 
 	//Create
 	try{
-		std::cout << socket_params;
 
 		switch_manager::create_switch(ver, dpid, lsi_name, num_of_tables, ma_list, reconnect_start_time, socket_type, socket_params);
 	}catch(...){
