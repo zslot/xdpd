@@ -2,8 +2,13 @@
 
 PKG_NAME="xdpd"
 PKG_NAME_DBG="xdpd-dbg"
-ROFL_PKG_NAME="rofl"
-ROFL_DBG_PKG_NAME="rofl-dbg"
+ROFL_DATAPATH_PKG_NAME="rofl-datapath"
+ROFL_DATAPATH_DBG_PKG_NAME="rofl-datapath-dbg"
+ROFL_COMMON_PKG_NAME="rofl-common"
+ROFL_COMMON_DBG_PKG_NAME="rofl-common-dbg"
+
+
+
 VERSION=""
 RELEASE=""
 DEFAULT_REQUIRES=" libconfig++9"
@@ -78,11 +83,11 @@ get_release
 #Generate the package
 if test -z "$IS_NOT_DEBUG";
 then
-	REQUIRES+=", $ROFL_DBG_PKG_NAME"
+	REQUIRES+=", $ROFL_DATAPATH_DBG_PKG_NAME, $ROFL_COMMON_DBG_PKG_NAME"
 	dump_result $PKG_NAME_DBG $PKG_NAME
 	generate_pkg $PKG_NAME_DBG $PKG_NAME
 else
-	REQUIRES+=", $ROFL_PKG_NAME"
+	REQUIRES+=", $ROFL_DATAPATH_PKG_NAME, $ROFL_COMMON_PKG_NAME"
 	dump_result  $PKG_NAME $PKG_NAME_DBG
 	generate_pkg $PKG_NAME $PKG_NAME_DBG
 fi
